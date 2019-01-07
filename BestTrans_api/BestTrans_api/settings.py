@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'BestTrans_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'api_database',
-        'USER': 'damian',
+        'NAME': 'api_db',
+        'USER': 'best_trans_user',
         'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 

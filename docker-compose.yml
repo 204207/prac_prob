@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: api_db
+      POSTGRES_USER: best_trans_user
+  web:
+    build: .
+    command: >
+      sh -c "python BestTrans_api/manage.py migrate &&
+             python BestTrans_api/manage.py runserver 0.0.0.0:8008"    
+    volumes:
+      - .:/BestTrans_api
+    ports:
+      - "8008:8008"
+    depends_on:
+      - db
