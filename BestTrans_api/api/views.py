@@ -91,7 +91,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         if request.user.is_active:
             profile = self.get_object()
             active_orders = profile.order_set.filter(is_active=True)
-            serializer = ProfileSerializer(active_orders, context={'request': request}, many=True)
+            serializer = OrderSerializer(active_orders, context={'request': request}, many=True)
             return Response(serializer.data)
         else:
             return HttpResponseNotAllowed('Not allowed')
@@ -101,7 +101,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         if request.user.is_active:
             profile = self.get_object()
             past_orders = profile.order_set.filter(is_active=False)
-            serializer = ProfileSerializer(past_orders, context={'request': request}, many=True)
+            serializer = OrderSerializer(past_orders, context={'request': request}, many=True)
             return Response(serializer.data)
         else:
             return HttpResponseNotAllowed('Not allowed')
@@ -111,7 +111,16 @@ class ProfileViewSet(viewsets.ModelViewSet):
         if request.user.is_active:
             profile = self.get_object()
             orders = profile.order_set.all()
-            serializer = ProfileSerializer(orders, context={'request': request}, many=True)
+            serializer = OrderSerializer(orders, context={'request': request}, many=True)
+            return Response(serializer.data)
+        else:
+            return HttpResponseNotAllowed('Not allowed')
+
+    @action(detail=False, methods=['get'])
+    def get_data_profil(self, request, *args, **kwargs):
+        if request.user.is_active:
+            profile = Profile.objects.get(user__username=request.data['username'])
+            serializer = ProfileSerializer(profile, context={'request': request}, many=False)
             return Response(serializer.data)
         else:
             return HttpResponseNotAllowed('Not allowed')
@@ -123,7 +132,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
             order = Order.objects.get(id=request.data['order'])
             order.customer.add(profile)
 
-            serializer = ProfileSerializer(profile, context={'request': request}, many=False)
+            serializer = OrderSerializer(profile, context={'request': request}, many=False)
             return Response(serializer.data)
         else:
             return HttpResponseNotAllowed('Not allowed')
@@ -169,7 +178,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             return HttpResponseNotAllowed('Not allowed')
 
     def create(self, request, *args, **kwargs):
-        if request.user.is_superuser:
+        if request.user.is_active:
             customer = Profile.objects.get(id=request.data['customer'])
             performer = request.data['performer']
             performer = BestTransData.objects.get(id=performer['id'])
