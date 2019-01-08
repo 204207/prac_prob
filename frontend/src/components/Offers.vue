@@ -7,24 +7,19 @@
 
 <script>
 import OfferItem from "./OfferItem.vue";
+import axios from "axios";
 
 export default {
   name: "Offers",
   data: function() {
     return {
-      offers: [
-        {
-          id: 1,
-          loading_place: "Łódź",
-          destination: "Warszawa"
-        },
-        {
-          id: 2,
-          loading_place: "Kielce",
-          destination: "Sieradz"
-        }
-      ]
+      offers: null
     };
+  },
+  mounted: function() {
+    axios
+      .get("http://185.238.73.103:8008/api/offers/?format=json")
+      .then(response => (this.offers = response));
   },
   components: {
     OfferItem
@@ -34,4 +29,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.offers {
+  margin: 0 auto;
+  width: 70%;
+}
 </style>
