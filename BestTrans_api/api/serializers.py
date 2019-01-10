@@ -76,8 +76,6 @@ class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Offer
         fields = '__all__'
-        depth = 2
-
 
 class DriverSerializer(serializers.ModelSerializer):
     class Meta:

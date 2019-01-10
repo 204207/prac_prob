@@ -19,7 +19,7 @@ export default {
   mounted: function() {
     axios
       .get("http://185.238.73.103:8008/api/offers/?format=json")
-      .then(response => (this.offers = response));
+      .then(response => (this.offers = response["data"]));
   },
   components: {
     OfferItem
