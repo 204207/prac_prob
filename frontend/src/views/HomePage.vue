@@ -1,7 +1,5 @@
 <template>
-  <mdb-container>
     <Offers/>
-  </mdb-container>
 </template>
 
 <script>

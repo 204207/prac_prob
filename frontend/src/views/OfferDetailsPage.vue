@@ -1,7 +1,8 @@
 <template>
-    <mdb-container>
-        <OfferDetails/>
-    </mdb-container>
+    <div>
+      Szczegóły oferty
+      <OfferDetails/>
+    </div>
 </template>
 
 <script>

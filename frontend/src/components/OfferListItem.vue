@@ -1,5 +1,5 @@
 <template>
-  <a :href="/oferty/ + offer.id" class="offer-item">
+  <router-link :to="/oferty/ + offer.id" class="offer-item">
     <div>
       <p>{{ offer.loading_place.place.country }}</p>
       <p>{{ offer.loading_place.place.place }}</p>
@@ -21,8 +21,7 @@
     <div>
       <p>{{ offer.price }} PLN</p>
     </div>
-
-  </a>
+  </router-link >
 </template>
 
 <script>
