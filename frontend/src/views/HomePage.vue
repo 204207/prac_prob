@@ -7,13 +7,11 @@
 <script>
 // @ is an alias to /src
 import Offers from "@/components/Offers.vue";
-import { mdbContainer } from "mdbvue";
 
 export default {
   name: "home",
   components: {
-    Offers,
-    mdbContainer
+    Offers
   }
 };
 </script>

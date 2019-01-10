@@ -1,8 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Offer from "./views/Offer.vue";
-import Offers from "./components/Offers.vue";
+import HomePage from "./views/HomePage";
+import OfferDetailsPage from "./views/OfferDetailsPage";
 
 Vue.use(Router);
 
@@ -10,29 +9,9 @@ export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: "/",
-      name: "home",
-      component: Home
-    },
-    {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
-    },
-    {
-      path: "/oferty",
-      name: "offers",
-      component: Offers
-    },
-    {
-      path: "/oferty/*",
-      name: "offer",
-      component: Offer
-    }
+    { path: "/", component: HomePage },
+    { path: "/oferty/*", component: OfferDetailsPage },
+
+    { path: "*", component: HomePage }
   ]
 });

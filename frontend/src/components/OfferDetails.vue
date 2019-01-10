@@ -1,12 +1,11 @@
 <template>
-  <mdb-container>
+  <div>
       DETAILS {{ offer.price }}
-  </mdb-container>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
-import { mdbContainer } from "mdbvue";
 
 export default {
   name: "OfferListItem",
@@ -20,9 +19,6 @@ export default {
       // eslint-disable-next-line
       .get("http://185.238.73.103:8008/api/offers/" + this.$route.params.pathMatch + "/?format=json")
       .then(response => (this.offer = response["data"]));
-  },
-  components: {
-    mdbContainer
   }
 };
 </script>

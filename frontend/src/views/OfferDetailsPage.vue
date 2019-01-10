@@ -6,13 +6,11 @@
 
 <script>
 import OfferDetails from "@/components/OfferDetails.vue";
-import { mdbContainer } from "mdbvue";
 
 export default {
   name: "home",
   components: {
-    OfferDetails,
-    mdbContainer
+    OfferDetails
   }
 };
 </script>
