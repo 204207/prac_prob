@@ -25,7 +25,7 @@ class ExtendAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExtendAddress
         fields = '__all__'
-
+        depth = 1
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)

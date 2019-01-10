@@ -1,18 +1,17 @@
 <template>
-  <mdb-container>
-    <Offers/>
-  </mdb-container>
+    <mdb-container>
+        <OfferDetails/>
+    </mdb-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import Offers from "@/components/Offers.vue";
+import OfferDetails from "@/components/OfferDetails.vue";
 import { mdbContainer } from "mdbvue";
 
 export default {
   name: "home",
   components: {
-    Offers,
+    OfferDetails,
     mdbContainer
   }
 };

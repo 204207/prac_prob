@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import Offer from "./views/Offer.vue";
 import Offers from "./components/Offers.vue";
 
 Vue.use(Router);
@@ -24,9 +25,14 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
-      path: "/offers",
+      path: "/oferty",
       name: "offers",
       component: Offers
+    },
+    {
+      path: "/oferty/*",
+      name: "offer",
+      component: Offer
     }
   ]
 });

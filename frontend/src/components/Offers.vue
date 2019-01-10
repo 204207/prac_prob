@@ -1,12 +1,12 @@
 <template>
   <div class="offers">
     <h1>Oferty</h1>
-    <OfferItem v-for="offer in offers" :key="offer.id" v-bind:offer="offer"/>
+    <OfferListItem v-for="offer in offers" :key="offer.id" v-bind:offer="offer"/>
   </div>
 </template>
 
 <script>
-import OfferItem from "./OfferItem.vue";
+import OfferListItem from "./OfferListItem.vue";
 import axios from "axios";
 
 export default {
@@ -22,7 +22,7 @@ export default {
       .then(response => (this.offers = response["data"]));
   },
   components: {
-    OfferItem
+    OfferListItem
   }
 };
 </script>

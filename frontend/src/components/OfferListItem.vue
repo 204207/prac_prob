@@ -1,5 +1,5 @@
 <template>
-  <a :href="offer.id" class="offer-item">
+  <a :href="/oferty/ + offer.id" class="offer-item">
     <div>
       <p>{{ offer.loading_place.place.country }}</p>
       <p>{{ offer.loading_place.place.place }}</p>
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "OfferItem",
+  name: "OfferListItem",
   props: ["offer"]
 };
 </script>
