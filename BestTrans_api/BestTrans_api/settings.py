@@ -26,7 +26,6 @@ SECRET_KEY = '#^av3n2yd9wtvj*&a=b6s%uaw#o5bx&qssi1%$lj%a1sp3%vwk'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-afs
 
 # Application definition
 
