@@ -1,40 +1,44 @@
 <template>
-  <div id="login-modal" role="dialog">
-    <div class="loginmodal-container">
-      <h1>Logowanie</h1>
-      <br>
-      <form @submit.prevent="login">
-        <div class="form-group">
-          <input
-            type="text"
-            v-model="username"
-            name="username"
-            placeholder="Nazwa użytkownika"
-            class="form-control"
-            :class="{ 'is-invalid': submitted && !username }"
-          >
-          <input
-            type="password"
-            v-model="password"
-            name="password"
-            placeholder="Hasło"
-            class="form-control"
-            :class="{ 'is-invalid': submitted && !password }"
-          >
-          <div v-show="submitted && !password" class="invalid-feedback">Hasło jest wymagane!</div>
-          <input type="submit" name="login" class="login loginmodal-submit" v-model="loginBtnTxt">
-        </div>
-      </form>
+  <div>
+    <Navbar/>
+    <div id="login-modal" role="dialog">
+      <div class="loginmodal-container">
+        <h1>Logowanie</h1>
+        <br>
+        <form @submit.prevent="login">
+          <div class="form-group">
+            <input
+              type="text"
+              v-model="username"
+              name="username"
+              placeholder="Nazwa użytkownika"
+              class="form-control"
+              :class="{ 'is-invalid': submitted && !username }"
+            >
+            <input
+              type="password"
+              v-model="password"
+              name="password"
+              placeholder="Hasło"
+              class="form-control"
+              :class="{ 'is-invalid': submitted && !password }"
+            >
+            <div v-show="submitted && !password" class="invalid-feedback">Hasło jest wymagane!</div>
+            <input type="submit" name="login" class="login loginmodal-submit" v-model="loginBtnTxt">
+          </div>
+        </form>
 
-      <div class="login-help">
-        <router-link to="/zarejestruj">Zarejestruj się</router-link> - 
-        <a href="#">Zapomniałeś hasła?</a>
+        <div class="login-help">
+          <router-link to="/zarejestruj">Zarejestruj się</router-link>-
+          <a href="#">Zapomniałeś hasła?</a>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
 import axios from "axios";
 
 export default {
@@ -58,6 +62,7 @@ export default {
         .then(response => {
           localStorage.setItem("token", response["data"]["token"]);
           this.loginBtnTxt = "Zalogowano!";
+          this.$router.push("/");
         })
         .catch(error => {
           if (error.response.status == 400) {
@@ -67,6 +72,9 @@ export default {
           }
         });
     }
+  },
+  components: {
+    Navbar
   }
 };
 </script>
@@ -74,7 +82,10 @@ export default {
 <style scoped>
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-/****** LOGIN MODAL ******/
+#login-modal {
+  margin-top: 50px;
+}
+
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;

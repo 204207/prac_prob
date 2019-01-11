@@ -1,9 +1,18 @@
 <template>
-    <div>
-        Orders Page
-    </div>
+  <div>
+    <Navbar/>Orders Page
+    <Footer/>
+  </div>
 </template>
 
 <script>
-export default {};
+import Navbar from "@/components/Navbar.vue";
+import Footer from "@/components/Footer.vue";
+
+export default {
+  components: {
+    Navbar,
+    Footer
+  }
+};
 </script>

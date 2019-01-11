@@ -31,6 +31,6 @@ export default {
 <style scoped>
 .offers {
   margin: 0 auto;
-  width: 70%;
+  width: 90%;
 }
 </style>

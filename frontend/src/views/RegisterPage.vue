@@ -1,5 +1,7 @@
 <template>
-  <div id="login-modal" role="dialog">
+<div>
+  <Navbar/>
+  <div id="register-modal" role="dialog">
     <div class="loginmodal-container">
       <h1>Rejestracja</h1>
       <br>
@@ -117,9 +119,11 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
 import axios from "axios";
 
 export default {
@@ -175,6 +179,9 @@ export default {
           this.registerBtnTxt = "Rejestracja nie powiodła się!";
         });
     }
+  },
+  components: {
+    Navbar
   }
 };
 </script>
@@ -182,7 +189,9 @@ export default {
 <style scoped>
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-/****** LOGIN MODAL ******/
+#register-modal {
+  margin-top: 50px;
+}
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;

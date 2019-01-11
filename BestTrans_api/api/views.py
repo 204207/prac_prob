@@ -117,9 +117,9 @@ class ProfileViewSet(viewsets.ModelViewSet):
             return HttpResponseNotAllowed('Not allowed')
 
     @action(detail=False, methods=['get'])
-    def get_data_profil(self, request, *args, **kwargs):
+    def user_details(self, request, *args, **kwargs):
         if request.user.is_active:
-            profile = Profile.objects.get(user__username=request.data['username'])
+            profile = Profile.objects.get(user__username=request.query_params['username'])
             serializer = ProfileSerializer(profile, context={'request': request}, many=False)
             return Response(serializer.data)
         else:
