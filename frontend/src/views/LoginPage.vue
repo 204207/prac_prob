@@ -61,8 +61,25 @@ export default {
         })
         .then(response => {
           localStorage.setItem("token", response["data"]["token"]);
-          this.loginBtnTxt = "Zalogowano!";
-          this.$router.push("/");
+
+          axios
+            .get(
+              "http://185.238.73.103:8008/api/profiles/user_details?username=" +
+                this.username,
+              {
+                headers: {
+                  Authorization: "Token " + localStorage.getItem("token")
+                }
+              }
+            )
+            .then(response => {
+              localStorage.setItem("profile", JSON.stringify(response["data"]));
+              this.loginBtnTxt = "Zalogowano!";
+              this.$router.push("/");
+            })
+            .catch(() => {
+              this.loginBtnTxt = "Nieznany błąd!";
+            });
         })
         .catch(error => {
           if (error.response.status == 400) {

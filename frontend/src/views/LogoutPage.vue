@@ -7,13 +7,12 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import axios from "axios";
 
 export default {
   name: "home",
   data() {
     return {
-      counter: 5,
+      counter: 3,
       interval: null
     };
   },
@@ -32,23 +31,13 @@ export default {
     }
   },
   mounted: function() {
-    axios
-      .get(
-        "http://185.238.73.103:8008/api/profiles/get_data_profile",
-        { username: "auu" },
-        {
-          headers: {
-            Authorization: "Token " + localStorage.getItem("token"),
-            "Content-Type": "application/json"
-          }
-        }
-      )
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    if (localStorage.getItem("token")) {
+      this.startCounter();
+      localStorage.removeItem("profile");
+      localStorage.removeItem("token");
+    } else {
+      this.$router.push("/");
+    }
   },
   components: {
     Navbar
