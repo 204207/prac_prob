@@ -41,7 +41,6 @@ export default {
     this.offer.destination.date = moment(
       String(this.offer.destination.date)
     ).format("DD-MM-YYYY hh:mm");
-    console.log(this.offer);
   }
 };
 </script>

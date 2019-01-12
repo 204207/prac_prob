@@ -47,7 +47,8 @@ export default {
       loginBtnTxt: "Zaloguj się",
       username: "",
       password: "",
-      submitted: false
+      submitted: false,
+      previousPath: ""
     };
   },
   methods: {
@@ -75,9 +76,15 @@ export default {
             .then(response => {
               localStorage.setItem("profile", JSON.stringify(response["data"]));
               this.loginBtnTxt = "Zalogowano!";
-              this.$router.push("/");
+
+              if (this.previousPath === "/stworz-oferte") {
+                this.$router.back();
+              } else {
+                this.$router.push();
+              }
             })
-            .catch(() => {
+            .catch(error => {
+              console.log(error);
               this.loginBtnTxt = "Nieznany błąd!";
             });
         })
@@ -89,6 +96,11 @@ export default {
           }
         });
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.previousPath = from.path;
+    });
   },
   components: {
     Navbar
