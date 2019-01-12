@@ -1,10 +1,12 @@
 <template>
   <div>
-      DETAILS {{ offer.price }}
+    DETAILS {{ offer.price }}
+    <CreateOrderButton :offer="offer" />
   </div>
 </template>
 
 <script>
+import CreateOrderButton from "@/components/CreateOrderButton.vue";
 import axios from "axios";
 
 export default {
@@ -17,8 +19,15 @@ export default {
   mounted: function() {
     axios
       // eslint-disable-next-line
-      .get("http://185.238.73.103:8008/api/offers/" + this.$route.params.pathMatch + "/?format=json")
+      .get(
+        "http://185.238.73.103:8008/api/offers/" +
+          this.$route.params.pathMatch +
+          "/?format=json"
+      )
       .then(response => (this.offer = response["data"]));
+  },
+  components: {
+    CreateOrderButton
   }
 };
 </script>
