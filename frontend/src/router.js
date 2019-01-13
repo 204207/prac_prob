@@ -24,7 +24,7 @@ export const router = new Router({
     { path: "/zarejestruj", component: RegisterPage },
     { path: "/wyloguj", component: LogoutPage },
 
-    { path: "/zamowienia", component: OrdersPage },
+    { path: "/zamowienia", alias: ["/zamowienia-aktywne", "/zamowienia-archiwalne"], component: OrdersPage },
 
     { path: "*", component: HomePage }
   ]

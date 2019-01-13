@@ -131,7 +131,7 @@
         <button type="submit" class="btn btn-primary">Utwórz ofertę</button>
       </form>
     </div>
-    <Footer/>
+    <!-- <Footer/> -->
   </div>
 </template>
 

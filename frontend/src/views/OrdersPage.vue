@@ -2,7 +2,6 @@
   <div>
     <Navbar/>
     <div class="container">
-      <h1>Zamówienia</h1>
       <Orders/>
     </div>
 
