@@ -54,14 +54,12 @@ export default {
   },
   mounted: function() {
     this.isLoggedIn = localStorage.getItem("token");
-    const url = window.location;
-
-    Array.from(document.getElementsByClassName("nav-link")).forEach(element => {
-      element.classList.remove("active");
-      if (url.toString() === element.href.toString()) {
-        element.classList.add("active");
-      }
-    });
   }
 };
 </script>
+
+<style scoped>
+.router-link-exact-active {
+  color: white !important;
+}
+</style>

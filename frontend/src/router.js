@@ -24,6 +24,7 @@ export const router = new Router({
     { path: "/zarejestruj", component: RegisterPage },
     { path: "/wyloguj", component: LogoutPage },
 
+    // eslint-disable-next-line
     { path: "/zamowienia", alias: ["/zamowienia-aktywne", "/zamowienia-archiwalne"], component: OrdersPage },
 
     { path: "*", component: HomePage }

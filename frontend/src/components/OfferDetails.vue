@@ -13,7 +13,7 @@ export default {
   name: "OfferListItem",
   data: function() {
     return {
-      offer: null
+      offer: {}
     };
   },
   mounted: function() {

@@ -1,6 +1,6 @@
 <template>
   <div class="orders">
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-bottom: 30px;">
       <div style="text-align: center;">
         <h1 style="text-align: center;">Zamówienia</h1>
       </div>
@@ -100,5 +100,9 @@ export default {
 .orders {
   margin: 50px auto;
   width: 90%;
+}
+
+.router-link-exact-active {
+  font-weight: bold;
 }
 </style>

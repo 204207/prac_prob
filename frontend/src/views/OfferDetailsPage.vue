@@ -1,8 +1,10 @@
 <template>
     <div>
       <Navbar/>
-      Szczegóły oferty
-      <OfferDetails/>
+      <div class="container" style="margin-top: 50px;">
+        <h1 style="text-align: center;">Szczegóły oferty</h1>
+        <OfferDetails/>
+      </div>
     </div>
 </template>
 
