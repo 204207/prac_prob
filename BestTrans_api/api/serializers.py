@@ -25,7 +25,7 @@ class ExtendAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExtendAddress
         fields = '__all__'
-
+        depth = 1
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
@@ -76,8 +76,6 @@ class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Offer
         fields = '__all__'
-        depth = 2
-
 
 class DriverSerializer(serializers.ModelSerializer):
     class Meta:
